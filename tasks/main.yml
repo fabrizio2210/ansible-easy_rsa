@@ -5,6 +5,7 @@
   include_vars: "{{ ansible_distribution }}.yml"
   tags:
     - easy_rsa
+  when: ansible_distribution is defined
 
 - name: Create CA directory
   command: make-cadir {{ easy_rsa_ca_dir }}
@@ -12,6 +13,12 @@
     creates: "{{ easy_rsa_ca_dir }}"
   tags:
     - easy_rsa
+
+- debug:
+    msg: "{{ easy_rsa_ca_dir }}"
+
+- debug:
+    msg: "{{ play_hosts }}"
 
 - name: Create keys directory
   file:
