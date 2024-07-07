@@ -84,10 +84,10 @@
     - easy_rsa
 
 - name: Generate client certificates and keys
-  shell: ". ./vars; ./pkitool {{ item }} >/dev/null"
+  shell: ". ./env; ./easyrsa gen-req {{ item }} nopass >/dev/null"
   args:
     chdir: "{{ easy_rsa_ca_dir }}"
-    creates: "{{ easy_rsa_key_dir }}/{{ item }}.key"
+    creates: "{{ easy_rsa_private_dir }}/{{ item }}.key"
   with_items:
     - "{{ easy_rsa_clients }}"
   tags:

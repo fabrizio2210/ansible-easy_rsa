@@ -4,3 +4,4 @@
 # Vuole percorso assoluto
 easy_rsa_ca_dir: "{{ playbook_dir }}/files/easy_rsa"
 easy_rsa_key_dir: "{{ easy_rsa_ca_dir }}/keys"
+easy_rsa_private_dir: "{{ easy_rsa_ca_dir }}/pki/private"
