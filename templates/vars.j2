@@ -28,7 +28,7 @@ export GREP="grep"
 # This variable should point to
 # the openssl.cnf file included
 # with easy-rsa.
-export KEY_CONFIG=`$EASY_RSA/whichopensslcnf $EASY_RSA`
+export KEY_CONFIG="$EASY_RSA/pki/safessl-easyrsa.cnf"
 
 # Edit this variable to point to
 # your soon-to-be-created key
@@ -80,3 +80,4 @@ export KEY_NAME="{{ easy_rsa_key_name }}"
 # If you'd like to sign all keys with the same Common Name, uncomment the KEY_CN export below
 # You will also need to make sure your OpenVPN server config has the duplicate-cn option set
 # export KEY_CN="CommonName"
+export EASYRSA_DN="cn_only"

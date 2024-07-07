@@ -84,7 +84,7 @@
     - easy_rsa
 
 - name: Generate client certificates and keys
-  shell: ". ./env; ./easyrsa gen-req {{ item }} nopass >/dev/null"
+  shell: ". ./env; ./easyrsa --batch gen-req {{ item }} nopass >/dev/null"
   args:
     chdir: "{{ easy_rsa_ca_dir }}"
     creates: "{{ easy_rsa_private_dir }}/{{ item }}.key"
