@@ -61,7 +61,7 @@
     - easy_rsa
 
 - name: Generate server certificate and key
-  shell: ". ./vars; ./pkitool --server {{ item }} >/dev/null"
+  shell: ". ./env; ./easyrsa build-server-full {{ item }} nopass >/dev/null"
   args:
     chdir: "{{ easy_rsa_ca_dir }}"
     creates: "{{ easy_rsa_key_dir }}/{{ item }}.key"
@@ -84,7 +84,7 @@
     - easy_rsa
 
 - name: Generate client certificates and keys
-  shell: ". ./env; ./easyrsa --batch gen-req {{ item }} nopass >/dev/null"
+  shell: ". ./env; ./easyrsa build-client-full {{ item }} nopass >/dev/null"
   args:
     chdir: "{{ easy_rsa_ca_dir }}"
     creates: "{{ easy_rsa_private_dir }}/{{ item }}.key"
